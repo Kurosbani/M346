@@ -1,8 +1,6 @@
 #! /usr/bin/env bash
-AWS_ACCESS_KEY_ID='***'
-AWS_SECRET_ACCESS_KEY='***'
-REGION='us-east-1'
-
+aws configure
+VERBOSE=true
 
 ###############################################################################
 # function iecho
@@ -10,6 +8,7 @@ REGION='us-east-1'
 # This function enables the script to display the specified text only if
 # the global variable $VERBOSE is set to true.
 ###############################################################################
+
 function iecho() {
   if [[ $VERBOSE == true ]]; then
     echo "$@"
@@ -34,7 +33,7 @@ function errecho() {
 # Parameters:
 #       -b bucket_name  -- The name of the bucket to create.
 #       -r region_code  -- The code for an AWS Region in which to
-#                          create the bucket.
+#                         create the bucket.
 #
 # Returns:
 #       The URL of the bucket that was created.
