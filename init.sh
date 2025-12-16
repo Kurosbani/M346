@@ -1,6 +1,17 @@
-#! /usr/bin/env bash
-aws configure
-VERBOSE=true
+#!/bin/bash
+
+set -euo pipefail
+REGION=$(aws configure get region)
+USER=$(aws sts get-caller-identity --query Account --output text)
+
+aws credentials
+
+LAMBDA_ROLE="${LAMBDA_ROLE:-LabRole}"
+FUNCTION="${FUNCTION:-RecognizingCelebitiesM346}"
+
+USER_NAME="${USER_NAME:-$(whoami)-$(date +%s)}"
+IN_BUCKET="${IN_BUCKET:-celebrecognizer-in-bucket-$USER_NAME}"
+OUT_BUCKET="${OUT_BUCKET:-celebrecognizer-out-bucket-$USER_NAME}"
 
 ###############################################################################
 # function iecho
@@ -106,4 +117,9 @@ function create_bucket() {
   fi
 }
 
+# ------------------ Deplyoing Lambda -------------------
+echo "Deploying Lambda function: '$FUNCTION'"
+
+# ------------------ S3 Trigger deployinge ---------------
+echo "S3 Trigger wird gesetzt"
 
