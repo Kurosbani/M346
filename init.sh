@@ -8,9 +8,13 @@ echo "AWS Region: $REGION"
 echo "AWS Account: $USER"
 echo
 
-# Enviroment
+# Environment
 LAMBDA_ROLE="${LAMBDA_ROLE:-LabRole}"
-FUNCTION="${FUNCTION:-RecognizingCelebitiesM346}"
+FUNCTION="${FUNCTION:-RecognizingCelebritiesM346}"
+LAMBDA_FILE="function.py"
+
+LAMBDA_ZIP="function.zip"
+LAMBDA_HANDLER="function.lambda_handler"
 
 # Variables
 USER_NAME="${USER_NAME:-$(whoami)}"
@@ -37,5 +41,15 @@ echo "UPLOADING YOUR IMAGE INTO THE IN-BUCKET"
 aws s3 cp "$IMAGE" "s3://$IN_BUCKET/$IMAGE"
 
 echo "DEPLOYING LAMBDA"
+rm -f "$LAMBDA_ZIP"
+zip "$LAMBDA_ZIP" function.py
+
+echo "REMOVING ANY EXISTING LAMBDA"
+aws lambda delete-function --function-name "$FUNCTION" --region "$REGION" || true
+
+ARN_ROLE=$(aws iam get-role --role-name "$LAMBDA_ROLE" --query 'Role.Arn' --output text)
+
+echo "CREATING NEW LAMBDA FUNCTION"
+aws lambda create-function --function-name "$FUNCTION" --runtime python3.14 --role "$ARN_ROLE" --handler "$LAMBDA_HANDLER" --zip-file "fileb://$LAMBDA_ZIP" --timeout 30 --memory-size 256 --environment "Variables={OUT_BUCKET=$OUT_BUCKET}" --region "$REGION"
 
 echo
