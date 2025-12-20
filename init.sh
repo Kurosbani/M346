@@ -6,7 +6,7 @@ REGION=$(aws configure get region)
 USER=$(aws sts get-caller-identity --query Account --output text)
 echo "AWS Region: $REGION"
 echo "AWS Account: $USER"
-echo
+
 
 # Lambda/Function konfiguration
 LAMBDA_ROLE="${LAMBDA_ROLE:-LabRole}"
@@ -15,14 +15,19 @@ FUNCTION="${FUNCTION:-RecognizingCelebritiesM346}"
 LAMBDA_FILE="function.py"
 LAMBDA_ZIP="function.zip"
 LAMBDA_HANDLER="function.lambda_handler"
+echo "Lambda role: $LAMBDA_ROLE"
+echo "Lambda Function: $FUNCTION"
 
 # Variablen
 USER_NAME="${USER_NAME:-$(whoami)}"
 IN_BUCKET="${IN_BUCKET:-celebrecognizer-in-bucket-$USER_NAME}"
 OUT_BUCKET="${OUT_BUCKET:-celebrecognizer-out-bucket-$USER_NAME}"
-IMAGE="${IMAGE:-image.jpg}"
+IMAGE="${IMAGE:-$(ls *.jpg *.png 2>/dev/null | head -n 1 || true)}"
 RESULT_FILE="${IMAGE%.*}.json"
 RESULT_PATH="./$RESULT_FILE"
+echo "IN Bucket: $IN_BUCKET"
+echo "OUT Bucket: $OUT_BUCKET"
+echo
 
 
 echo "--- DELETING ANY PRE-EXISTING BUCKETS ---"
@@ -90,7 +95,7 @@ echo
 
 
 echo "DOWNLOADING RECOGNITION RESULTS"
-# Wartet, bis die vom Benutzer gegebene Datei im IN Bucket vorhanden ist
+# Wartet, bis die vom Benutzer gegebene Datei im IN Bucket vorhanden ist, nur die erste Datei wird im IN Bucket hochgeladen
 until aws s3 ls "s3://$OUT_BUCKET/$RESULT_FILE" >/dev/null 2>&1; do
   sleep 2
 done
