@@ -71,3 +71,13 @@ echo
 
 echo "UPLOADING YOUR IMAGE INTO THE IN-BUCKET"
 aws s3 cp "$IMAGE" "s3://$IN_BUCKET/$IMAGE"
+
+echo "DOWNLOADING RECOGNITION RESULTS"
+RESULT_FILE="${IMAGE%.*}.json"
+LOCAL_RESULT="./$RESULT_FILE"
+
+until aws s3 ls "s3://$OUT_BUCKET/$RESULT_FILE" >/dev/null 2>&1; do
+  sleep 2
+done
+
+aws s3 cp "s3://$OUT_BUCKET/$RESULT_FILE" "$LOCAL_RESULT"
