@@ -46,7 +46,7 @@ echo "REMOVING ANY EXISTING LAMBDA"
 aws lambda delete-function --function-name "$FUNCTION" --region "$REGION" || true
 
 echo "CREATING NEW LAMBDA FUNCTION"
-aws lambda create-function --function-name "$FUNCTION" --runtime python3.14 --role "$ARN_ROLE" --handler "$LAMBDA_HANDLER" --zip-file "fileb://$LAMBDA_ZIP" --timeout 15 --memory-size 256 --environment "Variables={OUT_BUCKET=$OUT_BUCKET}" --region "$REGION"
+aws lambda create-function --function-name "$FUNCTION" --runtime python3.14 --role "$ARN_ROLE" --handler "$LAMBDA_HANDLER" --zip-file "fileb://$LAMBDA_ZIP" --timeout 15 --memory-size 128 --environment "Variables={OUT_BUCKET=$OUT_BUCKET}" --region "$REGION"
 
 echo
 
