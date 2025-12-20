@@ -1,5 +1,6 @@
 import boto3
 import json
+import os
 
 def lambda_handler(event, context):
     # Extract bucket and photo from S3 trigger event
@@ -7,7 +8,7 @@ def lambda_handler(event, context):
     photo = event['Records'][0]['s3']['object']['key']
     
     # Output bucket (different from input)
-    output_bucket = 'your-output-bucket-name'
+    output_bucket = os.environ['OUT_BUCKET']
     
     client = boto3.client('rekognition')
     s3 = boto3.client('s3')
