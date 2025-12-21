@@ -52,10 +52,12 @@ echo "--- DEPLOYING LAMBDA ---"
 # Löscht die gezippte Python Datei und Komprimiert die originale Python Datei zu ZIP
 rm -f "$LAMBDA_ZIP"
 zip "$LAMBDA_ZIP" function.py
+echo
 
 echo "--- REMOVING ANY PRE-EXISTING LAMBDA ---"
 # Löscht vorherige Lambda Funktion falls schon eine existiert
 aws lambda delete-function --function-name "$FUNCTION" --region "$REGION" || true
+echo
 
 echo "--- CREATING NEW LAMBDA FUNCTION ---"
 # Ertellt eine neue Lambda Funktion
@@ -81,6 +83,7 @@ cat > s3-notification.json <<EOF
   ]
 }
 EOF
+echo
 
 echo "--- DOWNLOADING S3 EVENT NOTIFICATION ---"
 # Ladet die Benachrichtigung im lokalen Gerät herunter
