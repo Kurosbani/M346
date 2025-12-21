@@ -1,5 +1,7 @@
 # M346
 
+In diesem M346 Projekt handelt es sich um einen cloudbasierten Gesichtserkennungsservice, der auf AWS implementiert wird. Dieses Projekt benutzt den Einsatz von AWS-Services wie Lambda und S3 für einen Face Recognition System. 
+
 ## Benötigte Programme:
 
 ### 1. Python
@@ -47,3 +49,12 @@ Für den session Token, kopiere deine Daten im AWS academy learner lab unter aws
 ```
 sudo chmod +x init.sh
 ```
+
+### 5. Ausführen
+Der letzte schritt liegt nur noch beim ausführen, nach dem ausführen werden die ergebnisse als json im S3 out-Bucket gespeichert.
+```
+./init.sh
+```
+
+### Weitere Dokus
+...
