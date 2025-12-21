@@ -88,13 +88,13 @@ aws s3api put-bucket-notification-configuration --bucket "$IN_BUCKET" --notifica
 echo
 
 
-echo "UPLOADING YOUR IMAGE INTO THE IN-BUCKET"
+echo "--- UPLOADING YOUR IMAGE INTO THE IN-BUCKET ---"
 # Ladet die vom Benutzer gegebene Datei im IN Bucket hoch
 aws s3 cp "$IMAGE" "s3://$IN_BUCKET/$IMAGE"
 echo
 
 
-echo "DOWNLOADING RECOGNITION RESULTS"
+echo "--- DOWNLOADING RECOGNITION RESULTS ---"
 # Wartet, bis die vom Benutzer gegebene Datei im IN Bucket vorhanden ist, nur die erste Datei wird im IN Bucket hochgeladen
 until aws s3 ls "s3://$OUT_BUCKET/$RESULT_FILE" >/dev/null 2>&1; do
   sleep 2
