@@ -4,18 +4,23 @@ In diesem M346 Projekt handelt es sich um einen cloudbasierten Gesichtserkennung
 
 ## Benötigte Programme:
 
-### 1. Python
-
-Instaliere Python mit den folgenden Link:
-
-https://www.python.org/downloads/  
-
-### 2. Ubuntu
+### 1. Ubuntu
 
 Falls du Windows verwendest, installiere wsl mit PowerShell als Administrator:
 
 ```
 wsl --install Ubuntu
+```
+
+### 2. Python
+
+Instaliere Python mit den folgenden Link:
+
+https://www.python.org/downloads/  
+
+Oder direkt in der CLI:
+```
+sudo apt install python3
 ```
 
 ### 3. AWS CLI
@@ -33,22 +38,26 @@ sudo snap install aws-cli
 ## Ablauf der Ausführung:
 
 ### 1.  Entpacke die ZIP Datei. 
-Für Windows users, entpacke sie unter den Ubuntu verzeichnis.
+Für Windows users, entpacke sie unter deinen Ubuntu Homeverzeichnis, zb:
+```
+\\wsl.localhost\Ubuntu\home\benj
+```
 
 ### 2. Bild im Projektordner einfügen. 
-Der Name ist egal, es muss einfach in .jpg oder .png enden.
+Als Beispielsdatei wurde ein Bild von Jeff Bezos als image.jpg gespeichert.
+Für eigene Bilder ist der Name egal, es muss einfach in .jpg oder .png enden.
 
 ### 3. Melde dich im aws an mit diesem bash Command:
 ```
 aws configure
 ```
-
-Für den session Token, kopiere deine Daten im AWS academy learner lab unter aws Details und füge sie im ~/.aws/credentials ein.
+Folge den anweisungen direkt in der CLI, du musst deinen Token eingeben welchen du auf der AWS Academy Learner Lab unter Details findest, als alternative kannst du auch deinen Token in ```~/.aws/credentials``` speichern.
 
 ### 4.  Mach init.sh ausführbar mit dem folgenden Command:
 ```
 sudo chmod +x init.sh
 ```
+Standarmässig kann man den Skript nicht ausführen, ohne ihm die Ausführungsrechte zu geben.
 
 ### 5. Ausführen
 Der letzte schritt liegt nur noch beim ausführen, nach dem ausführen werden die ergebnisse als json im S3 out-Bucket gespeichert.
@@ -57,4 +66,6 @@ Der letzte schritt liegt nur noch beim ausführen, nach dem ausführen werden di
 ```
 
 ### Weitere Dokus
-...
+- [Reflexion](/docs/reflexion.md)
+- [Skript](/docs/skript.md)
+- [Tests](/docs/tests.md)

@@ -10,6 +10,8 @@ Ich hatte mich so gefreut nach dem alles so funktioniert hatte wie ich das erhof
 
 Den Python Skript hatte ich dank ein wenig Python vorwissen  relativ schnell fertig, alle notwendige konfigruationen waren auch keine grosse Sache.
 
+Nach dem wir alles aufgesetzt haben, war es auch sehr lustig mit der Gesichtserkennung umzuspielen, wir hatten bilder von uns aufgeladen um zu sehen ob wir erkannt werden.
+
 ### Negative Punkte
 
 Am anfang des Projekts habe ich die aufgabenstellung nicht ganz verstanden, und bin deswegen zu lange steckengeblieben. Aber daraus habe ich zumindest mal gelernt das ich früher bei unklarheiten nachfragen soll.
