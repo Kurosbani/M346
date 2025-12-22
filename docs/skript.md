@@ -1,6 +1,6 @@
 # Skript
 
-### Hier ist die vollständige erklärung des Skripts und was es macht
+## Hier ist die vollständige erklärung des Skripts und was es macht
 ## Funktion
 Das Ziel vom Skript ist, eine Gegebene Bild Datei nehmen, und durch einer Lambda Funktion erkennen, ob es eine beliebte Person beinhaltet und welche sie ist.
 
