@@ -35,6 +35,14 @@ Falls es nicht klappt, verwende diesen Befehl im Ubuntu:
 sudo snap install aws-cli
 ```
 
+### 4. Ubuntu ZIP
+
+Der Skript muss Zip Dateien erstellen können, was man erstens herunterladen muss:
+
+```
+sudo apt install zip
+```
+
 ## Ablauf der Ausführung:
 
 ### 1.  Entpacke die ZIP Datei. 
@@ -59,7 +67,13 @@ sudo chmod +x init.sh
 ```
 Standarmässig kann man den Skript nicht ausführen, ohne ihm die Ausführungsrechte zu geben.
 
-### 5. Ausführen
+### 5. Berechtigung zum ausführen geben
+Man muss sich die Berechtigungen in der Directory geben befor man den Skript endgültig ausführen kann.
+```
+sudo chown -R <user>:<group> . 
+```
+
+### 6. Ausführen
 Der letzte schritt liegt nur noch beim ausführen, nach dem ausführen werden die ergebnisse als json im S3 out-Bucket gespeichert.
 ```
 ./init.sh
