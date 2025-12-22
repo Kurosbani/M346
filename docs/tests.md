@@ -79,17 +79,18 @@ Der Test Fall ist richtig
 ### Fall: Ein Bild von einer Beliebten Person wird mit falschen Bildformat gegeben
 Das Bild: 
 
-[albert.tiff](https://github.com/user-attachments/files/24292319/albert.tiff)
+![albert](https://github.com/user-attachments/assets/a9619026-93ec-4278-981c-9758abc603fe)
 
-Das Bild ist ein TIFF Bild von Albert Einstein, unser Skript kann nur PNGs oder JPGs wahrnehmen
+Das Bild ist ein GIF von Albert Einstein, unser Skript kann nur PNGs oder JPGs wahrnehmen
 #### Erwatetes Resultat:
-Es wird einen Error geben während der Skript läuft, also keine JSON Resultate
+Es wird einen Error geben während der Skript läuft, also keine JSON Resultate werden zurückgegeben
 
 #### Wahrer Resultat:
-<img width="1919" height="96" alt="image" src="https://github.com/user-attachments/assets/a079aec7-89a3-4da1-b539-a7d1cbbea51e" />
+
+<img width="334" height="30" alt="image" src="https://github.com/user-attachments/assets/1996ff82-9fa2-416d-9134-545dd59efcef" />
 
 
-Ein Error wurde gegeben befor es überhaupt die Buckets erstellen konnte
+Ein Error wurde gegeben als es versucht hat ein passendes Bild zu suchen
 
 Der Test Fall ist richtig
 
@@ -99,12 +100,13 @@ Der Test Fall ist richtig
 Kein Bild wird gegeben dieses Mal
 
 #### Erwatetes Resultat:
-Es wird einen Error geben während der Skript läuft, also keine JSON Resultate
+Es wird einen Error geben während der Skript läuft, also keine JSON Resultate werden zurückgegeben
 
 #### Wahrer Resultat:
-<img width="1919" height="94" alt="image" src="https://github.com/user-attachments/assets/e5fc76c3-ddc8-42c7-bddd-761191e347e4" />
+<img width="319" height="21" alt="image" src="https://github.com/user-attachments/assets/c3b891eb-17c7-43e2-b055-7e98eab934a5" />
 
-Ein Error wurde gegeben befor es überhaupt die Buckets erstellen konnte
+
+Ein Error wurde gegeben, es konnte nichts finden und hat den Skript deshalb abgebrochen
 
 Der Test Fall ist richtig
 
@@ -120,10 +122,11 @@ Das Skript nimmt die Datei wahr, aber das JSON Resultat erkennt keine Gesichter 
 
 #### Wahrer Resultat:
 
-<img width="1919" height="98" alt="image" src="https://github.com/user-attachments/assets/cedc3070-5c63-4d5c-b952-20cd730bb688" />
+<img width="327" height="89" alt="image" src="https://github.com/user-attachments/assets/94255b83-0e36-4cbc-86d7-c85307272b94" />
 
-Ein Error wurde gegeben befor es überhaupt die Buckets erstellen konnte
+Der Ablauf vom Skript ging wie es sollte, bise es verscuht hat den JSON Resultat herunterzuladen wobei es stecken geblieben ist.
 
-Der Test Fall ist falsch
+Der Test Fall ist einigerweise richtig
+
 
 
